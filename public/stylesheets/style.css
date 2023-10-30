@@ -1,0 +1,65 @@
+body {
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+    color: #00b7ff;
+}
+
+.message {
+    display: grid;
+    grid-template: 2fr 1fr / 1fr 1fr;
+    width: 30vw;
+    border: 1px solid;
+    padding: 10px;
+}
+
+.message:not(:last-child) {
+    margin-bottom: 15px;
+}
+
+.message .user {
+    grid-area: 2 / 1;
+}
+
+.message .time {
+    grid-area: 2 / 2;
+    font-style: italic;
+}
+
+.form {
+    width: 40vw;
+}
+
+.form div {
+    display: flex;
+    flex-direction: column;
+}
+
+.form div {
+    margin-bottom: 15px;
+}
+
+.form textarea {
+    max-width: 300px;
+    max-height: 100px;
+    min-height: 60px;
+    resize: vertical;
+}
+
+.form input[type="text"] {
+    max-width: 300px;
+    min-height: 30px;
+    line-height: 100%;
+}
+
+.new-msg {
+    background-color: rgb(31, 31, 31);
+    color: white;
+    padding: 20px 10px;
+    margin-top: 40px;
+    border-radius: 20px;
+    text-decoration: none;
+    display: inline-block;
+}

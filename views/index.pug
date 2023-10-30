@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    h1= title
+    div 
+        each mes in messages 
+          div(class="message") 
+            p(class="text")= mes.text
+            p(class="user")= " - " + mes.user
+            p(class="time")= mes.added.toLocaleString("no-NO")
+    a(href="/new", class="new-msg")= "New message" 
+

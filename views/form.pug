@@ -1,0 +1,12 @@
+extends layout 
+
+block content 
+    h1= "New message"
+    form(action="/new", method="POST", class="form") 
+        div
+            label(for="name")= "Name" 
+            input(type="text")#name(name="name")
+        div 
+            label(for="message")= "Message" 
+            textarea#message(name="message")
+        button(type="submit")= "Submit"
