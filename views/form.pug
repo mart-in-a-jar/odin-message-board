@@ -5,7 +5,7 @@ block content
     form(action="/new", method="POST", class="form") 
         div
             label(for="name")= "Name" 
-            input(type="text")#name(name="name")
+            input#name(type="text", name="name")
         div 
             label(for="message")= "Message" 
             textarea#message(name="message")
