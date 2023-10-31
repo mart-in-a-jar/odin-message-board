@@ -13,7 +13,15 @@ var app = express();
 const mongoUrl = process.env.MONGO_URL
     ? process.env.MONGO_URL + "/messageBoard"
     : "mongodb://localhost:27017/messageBoard";
-mongoose.connect(mongoUrl);
+mongoose
+    .connect(mongoUrl)
+    .then(() => {
+        console.log("Connected");
+    })
+    .catch((e) => {
+        console.error(e.message);
+    });
+console.log(mongoUrl);
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
