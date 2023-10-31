@@ -11,7 +11,7 @@ var indexRouter = require("./routes/index");
 var app = express();
 
 const mongoUrl =
-    process.env.MONGO_URL || "mongodb://localhost:27017/messageBoard";
+    process.env.MONGO_URL + "/messageBoard" || "mongodb://localhost:27017/messageBoard";
 mongoose.connect(mongoUrl);
 
 // view engine setup
