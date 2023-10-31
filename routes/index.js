@@ -1,21 +1,10 @@
 var express = require("express");
+const Message = require("../models/Message");
 var router = express.Router();
 
-const messages = [
-    {
-        text: "Hi there!",
-        user: "Amando",
-        added: new Date(),
-    },
-    {
-        text: "Hello world",
-        user: "Charles",
-        added: new Date(),
-    },
-];
-
 /* GET home page. */
-router.get("/", function (req, res) {
+router.get("/", async function (req, res) {
+    const messages = await readFromDb();
     res.render("index", { title: "Mini Messageboard", messages: messages });
 });
 
@@ -24,9 +13,28 @@ router.get("/new", (req, res) => {
 });
 
 router.post("/new", (req, res) => {
-    const { message, name } = req.body;
-    messages.push({ text: message, user: name, added: new Date() });
+    pushToDb(req.body);
     res.redirect("/");
 });
+
+const readFromDb = async () => {
+    try {
+        return await Message.find();
+    } catch (error) {
+        console.error(error.message);
+    }
+};
+
+const pushToDb = async (data) => {
+    const { message, name } = data;
+    try {
+        const res = await Message.create({
+            text: message,
+            user: name,
+        });
+    } catch (error) {
+        console.error(error.message);
+    }
+};
 
 module.exports = router;
