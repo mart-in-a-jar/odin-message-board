@@ -10,18 +10,8 @@ var indexRouter = require("./routes/index");
 
 var app = express();
 
-const mongoUrl = process.env.MONGO_URL
-    ? process.env.MONGO_URL + "/messageBoard"
-    : "mongodb://localhost:27017/messageBoard";
-mongoose
-    .connect(mongoUrl)
-    .then(() => {
-        console.log("Connected");
-    })
-    .catch((e) => {
-        console.error(e.message);
-    });
-console.log(mongoUrl);
+const mongoUrl = process.env.MONGO_URL || "mongodb://localhost:27017";
+mongoose.connect(mongoUrl, { dbName: "messageBoard" });
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
