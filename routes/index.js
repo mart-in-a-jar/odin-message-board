@@ -19,7 +19,7 @@ router.post("/new", (req, res) => {
 
 const readFromDb = async () => {
     try {
-        return await Message.find();
+        return await Message.find().sort({ added: -1 });
     } catch (error) {
         console.error(error.message);
     }
